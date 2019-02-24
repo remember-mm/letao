@@ -123,14 +123,14 @@ ul {
 .lt_main .main_body .breadcrumb {
   margin-top: 20px;
 }
-.lt_main .main_body .breadcrumb a {
+.lt_main .main_body .breadcrumb .system {
   color: #337ab7;
 }
-.lt_main .main_body .breadcrumb a:hover {
+.lt_main .main_body .breadcrumb .system:hover {
   color: #23527c;
 }
-.lt_main .main_body .breadcrumb a.active,
-.lt_main .main_body .breadcrumb a.active:hover{
+.lt_main .main_body .breadcrumb a,
+.lt_main .main_body .breadcrumb a:hover{
   color: #777;
 }
 .lt_main .table1,
@@ -139,11 +139,11 @@ ul {
   height: 400px;
 }
 
-#userTable ,
-#userTable th {
+.main_content table th,
+.main_content table td {
   text-align: center;
+  vertical-align: middle !important;
 }
-#userTable td {
-  vertical-align: middle;
-
+.main_body .main_content .table {
+  margin-top: 20px;
 }

@@ -16,6 +16,9 @@ a:active{
 ul {
   list-style: none;
 }
+.mt_20 {
+  margin-top: 20px;
+}
 
 
 
@@ -120,9 +123,7 @@ ul {
 .lt_main .main_body {
   padding: 50px 15px 0;
 }
-.lt_main .main_body .breadcrumb {
-  margin-top: 20px;
-}
+
 .lt_main .main_body .breadcrumb .system {
   color: #337ab7;
 }
@@ -143,7 +144,4 @@ ul {
 .main_content table td {
   text-align: center;
   vertical-align: middle !important;
-}
-.main_body .main_content .table {
-  margin-top: 20px;
 }

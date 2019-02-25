@@ -9,7 +9,7 @@ $(function(){
         },
         tooltip: {},
         legend: {
-            data: ['人数']
+            data: ['人数','销量']
         },
         xAxis: {
             data: ["1月", "2月", "3月", "4月", "5月", "6月"]

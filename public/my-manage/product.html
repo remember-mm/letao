@@ -55,13 +55,13 @@
                     <table class="table table-hover table-bordered mt_20">
                         <thead>
                             <tr>
-                                <th>序号</th>
-                                <th>商品名称</th>
-                                <th>商品描述</th>
-                                <th>商品库存</th>
-                                <th>商品尺寸</th>
-                                <th>商品状态</th>
-                                <th>操作</th>
+                                <th width = '10%'>序号</th>
+                                <th width = '25%'>商品名称</th>
+                                <th width = '25%'>商品描述</th>
+                                <th width = '10%'>商品库存</th>
+                                <th width = '10%'>商品尺寸</th>
+                                <th width = '10%'>商品状态</th>
+                                <th width = '10%'>操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,32 +98,59 @@
 
     <!-- 添加分类模态框 -->
     <div class="modal fade" tabindex="-1" id="add_modal">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <form id="form">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">添加分类</h4>
+                        <h4 class="modal-title">添加商品</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group btn-group">
-                            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                <span class="dropdown-text">请选择一级分类</span>
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <!-- 下拉一级分类 -->
-                            </ul>
-                        </div>
-                        <div class="form-group mt_20">
-                            <input type="text" name="categoryName" class="form-control" placeholder="请输入二级分类">
-                        </div>
-                        <div class="form-group mt_20">
-                            <label for="selectImage" class="btn btn-default">选择图片</label>
-                            <input type="file" id="selectImage" style="display: none">
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span class="dropdown-text">请选择二级分类</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <!-- 下拉二级分类 -->
+                                </ul>
+                                <!-- 隐藏域 -->
+                                <input type="hidden" name="brandId">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <img src="./images/none.png" style="height: 100px;">
+                            <input type="text" name="proName" class="form-control" placeholder="请输入商品名称">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="proDesc" class="form-control" cols="30" rows="3" placeholder="请输入商品描述"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="num" class="form-control" placeholder="请输入商品库存">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="size" class="form-control" placeholder="请输入商品尺码">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="oldPrice" class="form-control" placeholder="请输入商品原价">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="price" class="form-control" placeholder="请输入商品现价">
+                        </div>
+                        <div class="form-group mt_20">
+                            <label class="btn btn-default" for="fileupload">选择图片</label>
+                            <!-- 配置必要的属性, input, type类型 file
+                                     1. name 后台用于接收图片文件的
+                                     2. data-url 配置插件将来上传文件时, 请求的后台接口地址
+                                     3. post 只要是文件上传, 必然是 post 请求, 默认就是 post
+                                     4. multiple 配置让 input 可以选择多个文件
+                                -->
+                            <input multiple data-url="/product/addProductPic" name="pic1" type="file" id="fileupload" style="display: none;">
+                        </div>
+                        <div class="form-group" id="imgBox">
+                            <!-- 隐藏域 用来判断图片是否3张 -->
+                            <input type="hidden" name="picStatus">
+                            <!-- <img src="./images/none.png" style="height: 100px;"> -->
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -135,8 +162,8 @@
         </div>
     </div>
 
-     <!-- 表格tbody内容 -->
-     <script type="text/html" id="productTpl">
+    <!-- 表格tbody内容 -->
+    <script type="text/html" id="productTpl">
         {{each rows v i}}
         <tr>
             <td>{{i+1+(page-1)*size}}</td>
@@ -159,7 +186,7 @@
     <!-- 下拉一级分类 -->
     <script type="text/html" id="dropdownTpl">
         {{each rows v i}}
-        <li><a href="javascript:;">{{v.categoryName}}</a></li>
+        <li><a href="javascript:;" data-id = "{{v.id}}">{{v.brandName}}</a></li>
         {{/each}}
     </script>
 
@@ -173,6 +200,8 @@
     <script src="./lib/echarts/echarts.min.js"></script>
     <script src="./lib/artTemplate/template-web.js"></script>
     <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+    <script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+    <script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/product.js"></script>
     <script src="./js/isLogin.js"></script>

@@ -13,6 +13,10 @@ a {
     text-decoration: none;
     color: #fff;
 }
+img {
+    display: block;
+    width: 100%;
+}
 
 .lt-container {
     width: 100%;
@@ -34,19 +38,20 @@ a {
     top: 0;
     left: 0;
 }
-.lt-header .icon-home,
-.lt-header .icon-search {
+.lt-header .icon-left,
+.lt-header .icon-right {
     width: 45px;
     height: 45px;
     text-align: center;
     line-height: 45px;
+    font-size: 18px;
     position: absolute;
     top: 0;
 }
-.lt-header .icon-home {
+.lt-header .icon-left {
     left: 0;
 }
-.lt-header .icon-search {
+.lt-header .icon-right {
     right: 0;
 }
 .lt-header h3 {
@@ -56,6 +61,7 @@ a {
     padding: 0;
     font-weight: normal;
     color: #fff;
+    font-size: 20px;
 }
 
 .lt-body {
@@ -85,6 +91,7 @@ a {
 }
 .lt-footer li a p {
     color: #fff;
+    margin-bottom: 0;
 }
 .lt-footer li a.active,
 .lt-footer li a.active p {
